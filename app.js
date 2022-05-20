@@ -4,6 +4,7 @@ const models = require('./models')
 const userRoutes=require('./routes/users')
 
 const port=process.env.PORT || 5000
+require('dotenv').config()
 
 const app=express()
 app.use(bodyParser.json())

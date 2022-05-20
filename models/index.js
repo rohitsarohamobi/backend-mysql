@@ -10,24 +10,18 @@ const sequelize = new Sequelize('demo', 'root', '',{
     pool:{max:150 , min:0,acquire:30000, idle:10000}
 })
 
-
 const db={}
-
-
-// fs.readdirSync(__dirname)
-// .filter(file => {
-//     return (file.indexOf('.')!==0 && file!==basename && (file.slice(-3)==='.js'))
-// })
-// .forEach(file => {
-//     const model=require(path.join(__dirname,file));(sequelize, DataTypes)
-//     db[model.name]=model
-// })
-
 
 db.Sequelize=Sequelize
 db.sequelize=sequelize
 
-db.users=require('./users.js')(sequelize, DataTypes)
+fs.readdirSync(__dirname)
+.filter(file => {
+    return (file.indexOf('.')!==0 && file!==basename && file.slice(-3)==='.js')
+}).forEach(file => {
+    const modelName=file.slice(0,-3)
+    db[modelName]=require('./'+file)(sequelize,DataTypes)
+})
 
 // db.sequelize.sync({force: true})
 // .then(() => {

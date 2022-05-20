@@ -13,13 +13,11 @@ module.exports=(sequelize, DataTypes) => {
             type: DataTypes.STRING,
             defaultValue: 'test@gmail.com'
         },
-        updatedAt: {
-            allowNull: true,
-            type: DataTypes.DATE
-          },
+        password:{
+            type: DataTypes.STRING
+        }
     },{
-        tableName: 'users',
-        timestamps: false
+        tableName: 'users'
     })
 
     return users

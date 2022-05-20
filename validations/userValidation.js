@@ -12,6 +12,11 @@ const registerValidations=[
         .not()
         .isEmpty()
         .withMessage('Name is required')
+        .trim(),
+    body('password')
+        .not()
+        .isEmpty()
+        .withMessage('Password is required')
         .trim()
 ]
 
@@ -22,6 +27,11 @@ const loginValidations=[
         .withMessage('Email Address is required')
         .isEmail()
         .withMessage('Please enter a valid email')
+        .trim(),
+    body('password')
+        .not()
+        .isEmpty()
+        .withMessage('Please enter password')
         .trim()
 ]
 
